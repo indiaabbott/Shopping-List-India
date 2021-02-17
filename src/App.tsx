@@ -1,6 +1,8 @@
 /**
  * Main takeaway: a default JSX element's onClick
- *  can only take a function.
+ *  can only take a function. Its return value is
+ *  unimportant - it's what the function _does_ rather
+ *  than what it _returns_ that matters.
  *
  * Task: try breaking the App by assigning things that
  *  AREN'T functions to any of the button onClicks.
@@ -22,16 +24,24 @@ function App() {
   /**
    * Section one:  3 x valid function references
    */
+
+  // doesn't return anything but still does a log
   function handleExpressionReference() {
     console.log("From function expression reference");
   }
 
+  // doesn't return anything but still does a log
   const handleArrowFunctionBody = () => {
     console.log("From handle arrow function body");
   };
 
+  // implicitly returns something - unimportant
+  // what matters is that it does the log
   const arrowFunctionImplicitReturn = () =>
     console.log("From arrow function implicit return");
+  // and console.log returns nothing, anyway:
+  //  console.log is itself a function that is
+  //  important for what it does, not what it returns
 
   /**
    * Section two: 4 x non-function references
